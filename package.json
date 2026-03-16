@@ -1,0 +1,60 @@
+{
+  "name": "agentkvm",
+  "version": "0.2.0",
+  "description": "CLI tool for AI agents to control devices through NanoKVM-USB hardware",
+  "type": "module",
+  "license": "MIT",
+  "author": "jimmytian",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamtwz/agentkvm"
+  },
+  "homepage": "https://github.com/iamtwz/agentkvm#readme",
+  "bugs": {
+    "url": "https://github.com/iamtwz/agentkvm/issues"
+  },
+  "keywords": [
+    "kvm",
+    "nanokvm",
+    "ai-agent",
+    "computer-use",
+    "hid",
+    "remote-control",
+    "serial",
+    "automation"
+  ],
+  "bin": {
+    "agentkvm": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm run typecheck && pnpm run test && pnpm run build"
+  },
+  "dependencies": {
+    "commander": "^13.0.0",
+    "serialport": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@serialport/bindings-cpp",
+      "esbuild"
+    ]
+  }
+}
