@@ -1,6 +1,6 @@
 {
   "name": "agentkvm",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CLI tool for AI agents to control devices through NanoKVM-USB hardware",
   "type": "module",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "dist"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "scripts": {
     "build": "tsup",
