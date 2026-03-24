@@ -9,15 +9,14 @@ export function registerServeCommand(program: Command): void {
     .description('Start HTTP server for remote agent access')
     .option('--host <addr>', 'bind address', '0.0.0.0')
     .option('--server-port <n>', 'HTTP port', '7070')
-    .option('--token <secret>', 'authentication token (or set AGENTKVM_TOKEN env var)')
-    .action(async (opts: { host: string; serverPort: string; token?: string }) => {
+    .action(async (opts: { host: string; serverPort: string }) => {
       try {
         const config = loadConfig();
 
         const serverConfig: ServerConfig = {
           host: opts.host || config.serverHost || '0.0.0.0',
           port: parseInt(opts.serverPort, 10) || config.serverPort || 7070,
-          token: opts.token || process.env.AGENTKVM_TOKEN || config.serverToken,
+          token: program.opts().token || process.env.AGENTKVM_TOKEN || config.serverToken,
           serialPort: getSerialPort(program),
           baudRate: config.baudRate,
           resolution: getResolution(program),
